@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14d20b1f4cb042eaaa8c3e087c7fd80f" Name="Diagram1" ZoomLevel="39">
+        <EntityTypeShape EntityType="MultimediaSYSModel.area" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.bankcode" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.city" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_adminsessions" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_BackgroundWeb_OperatePower" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_MaterialManagement" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_MaterialManagementDetail" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_TerminalEquipmentCategory" Width="1.5" PointX="8" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_TerminalEquipmentList" Width="1.5" PointX="10.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_user_OperatePower" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_usergroups" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_users" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.province" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_adminsessions_jjj_users" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_MaterialManagement_jjj_users" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_MaterialManagementDetail_jjj_MaterialManagement" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_MaterialManagementDetail_jjj_users" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_TerminalEquipmentList_jjj_users" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_user_OperatePower_jjj_users" ManuallyRouted="false" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_users_jjj_usergroups" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_TerminalEquipmentSerialCommand" Width="2" PointX="12.5" PointY="9.875" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_DocumentDetail" Width="1.5" PointX="16.875" PointY="22.875" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_ImageDetail" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_TextDetail" Width="3.625" PointX="16.875" PointY="26" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_TimeDetail" Width="1.5" PointX="16.875" PointY="30.25" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_VideoDetail" Width="1.5" PointX="16.875" PointY="20" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoList" Width="1.5" PointX="12.375" PointY="21.625" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramInfoListItem" Width="1.5" PointX="14.625" PointY="24.75" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_ProgramSendSerialList" Width="1.5" PointX="14.625" PointY="15.25" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList" />
+        <AssociationConnector Association="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_user_DrinkCostSerialList" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="MultimediaSYSModel.jjj_TerminalSwitchScreenTime" Width="1.5" PointX="15.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

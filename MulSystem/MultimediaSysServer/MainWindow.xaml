@@ -1,0 +1,12 @@
+﻿<Window x:Class="MultimediaSysServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="启动" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="75" Name="btnStart" Click="btnStart_Click"/>
+        <Button Content="关闭" HorizontalAlignment="Left" Margin="89,10,0,0" VerticalAlignment="Top" Width="75" Name="btnStop" Click="btnStop_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="128" Margin="0,57,0,0" TextWrapping="Wrap" Text="请输入你想广播的消息内容" VerticalAlignment="Top" Width="507" Name="txtGuangBoInfo"/>
+        <Button Content="广播" HorizontalAlignment="Left" Margin="89,271,0,0" VerticalAlignment="Top" Width="75" Name="btnGuangBo" Click="btnGuangBo_Click"/>
+
+    </Grid>
+</Window>

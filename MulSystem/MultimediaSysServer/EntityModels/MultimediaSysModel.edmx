@@ -1,0 +1,2027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MultimediaSYSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="60" />
+          <Property Name="cityId" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="bankcode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="text" />
+          <Property Name="name" Type="text" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="provinceId" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="jjj_adminsessions">
+          <Key>
+            <PropertyRef Name="adminsessionsId" />
+          </Key>
+          <Property Name="adminsessionsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="ip" Type="nvarchar" MaxLength="250" />
+          <Property Name="dateline" Type="datetime" />
+          <Property Name="errorCount" Type="int" />
+          <Property Name="allowDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="jjj_BackgroundWeb_OperatePower">
+          <Key>
+            <PropertyRef Name="OperatePowerId" />
+          </Key>
+          <Property Name="OperatePowerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperatePowerName" Type="varchar" MaxLength="50" />
+          <Property Name="OperatePowerURL" Type="varchar" MaxLength="500" />
+          <Property Name="ParentOperatePowerId" Type="int" />
+          <Property Name="layer" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_MaterialManagement">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialFolderName" Type="varchar" MaxLength="500" />
+          <Property Name="parentId" Type="int" />
+          <Property Name="layer" Type="int" />
+          <Property Name="updateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="SouthWing_MaterialID" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_MaterialManagementDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="500" />
+          <Property Name="FileSize" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FileType" Type="int" />
+          <Property Name="FilePath" Type="varchar" MaxLength="500" />
+          <Property Name="FileSuffixName" Type="varchar" MaxLength="50" />
+          <Property Name="TransformFilePath" Type="varchar" MaxLength="5000" />
+          <Property Name="TransformFileSuffixName" Type="varchar" MaxLength="500" />
+          <Property Name="ThumbnailImgPath" Type="varchar" MaxLength="500" />
+          <Property Name="UploadTime" Type="datetime" />
+          <Property Name="UploadUserId" Type="int" />
+          <Property Name="OriginalFileName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_DocumentDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramInfoItemID" Type="int" Nullable="false" />
+          <Property Name="DocumentLayer" Type="int" />
+          <Property Name="TimeLength" Type="int" />
+          <Property Name="CartoonType" Type="int" />
+          <Property Name="DocumentUrl" Type="varchar" MaxLength="900" />
+          <Property Name="ProgramInfoItemDocumentClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_ProgramInfoItemDocument_ServerBack" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_ImageDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramInfoItemID" Type="int" Nullable="false" />
+          <Property Name="ImageLayer" Type="int" />
+          <Property Name="TimeLength" Type="int" />
+          <Property Name="CartoonType" Type="int" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="900" />
+          <Property Name="animation" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramInfoItemImageClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_ProgramInfoItemImage_ServerBack" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_TextDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramInfoItemID" Type="int" Nullable="false" />
+          <Property Name="TextLayer" Type="int" />
+          <Property Name="TextContent" Type="varchar" MaxLength="5000" />
+          <Property Name="TextDirectionType" Type="int" />
+          <Property Name="IsBackgroundTransparent" Type="int" />
+          <Property Name="BackgroundColor" Type="varchar" MaxLength="50" />
+          <Property Name="foreColor" Type="varchar" MaxLength="50" />
+          <Property Name="IsBold" Type="int" />
+          <Property Name="FontFamily" Type="varchar" MaxLength="50" />
+          <Property Name="FontSize" Type="int" />
+          <Property Name="PlayCount" Type="int" />
+          <Property Name="PlaySpeed" Type="int" />
+          <Property Name="ProgramInfoItemTextClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_ProgramInfoItemText_ServerBack" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_TimeDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramInfoItemID" Type="int" Nullable="false" />
+          <Property Name="FontFamily" Type="varchar" MaxLength="50" />
+          <Property Name="FontSize" Type="int" />
+          <Property Name="FontFormat" Type="varchar" MaxLength="50" />
+          <Property Name="IsBackgroundTransparent" Type="int" />
+          <Property Name="IsBold" Type="int" />
+          <Property Name="BackgroundColor" Type="varchar" MaxLength="50" />
+          <Property Name="foreColor" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramInfoItemTimeClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_ProgramInfoItemTime_ServerBack" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_VideoDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramInfoItemID" Type="int" Nullable="false" />
+          <Property Name="VideoLayer" Type="int" />
+          <Property Name="VideoVoice" Type="int" />
+          <Property Name="VideoUrl" Type="varchar" MaxLength="900" />
+          <Property Name="ProgramInfoItemVideoClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_ProgramInfoItemVideo_ServerBack" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoList">
+          <Key>
+            <PropertyRef Name="ProgramInfoID" />
+          </Key>
+          <Property Name="ProgramInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramTitle" Type="varchar" MaxLength="500" />
+          <Property Name="ProgramWidth" Type="int" />
+          <Property Name="ProgramHeight" Type="int" />
+          <Property Name="ProgramStatus" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsDeleted" Type="int" />
+          <Property Name="ProgramClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_Program_ServerBack" Type="varchar" MaxLength="500" />
+          <Property Name="ContainerClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_Container_ServerBack" Type="varchar" MaxLength="500" />
+          <Property Name="ContainerLayout" Type="varchar" MaxLength="50" />
+          <Property Name="ContainerName" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoListItem">
+          <Key>
+            <PropertyRef Name="ProgramInfoItemID" />
+          </Key>
+          <Property Name="ProgramInfoItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramInfoID" Type="int" Nullable="false" />
+          <Property Name="ProgramInfoItemType" Type="int" />
+          <Property Name="ProgramInfoItemTitle" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramInfoItemLeft" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProgramInfoItemTop" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProgramInfoItemWidth" Type="int" />
+          <Property Name="ProgramInfoItemHeight" Type="int" />
+          <Property Name="ProgramInfoItemLayer" Type="int" />
+          <Property Name="IsShowWater" Type="int" />
+          <Property Name="ProgramInfoItemClientId" Type="varchar" MaxLength="500" />
+          <Property Name="Second_ProgramInfoItem_ServerBack" Type="varchar" MaxLength="500" />
+          <Property Name="TopMost" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramSendSerialList">
+          <Key>
+            <PropertyRef Name="ProgramSendSerialID" />
+          </Key>
+          <Property Name="ProgramSendSerialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalEquipmentID" Type="int" Nullable="false" />
+          <Property Name="ProgramInfoID" Type="int" Nullable="false" />
+          <Property Name="SendStatus" Type="int" />
+          <Property Name="EfficaciousDateStart" Type="date" />
+          <Property Name="EfficaciousDateEnd" Type="date" />
+          <Property Name="EfficaciousTimeStart" Type="time" Precision="7" />
+          <Property Name="EfficaciousTimeEnd" Type="time" Precision="7" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ReceiveBackTime" Type="datetime" />
+          <Property Name="DownloadOverTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalEquipmentCategory">
+          <Key>
+            <PropertyRef Name="TerminalEquipmentCategoryId" />
+          </Key>
+          <Property Name="TerminalEquipmentCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalEquipmentCategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Layer" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalEquipmentList">
+          <Key>
+            <PropertyRef Name="TerminalEquipmentID" />
+          </Key>
+          <Property Name="TerminalEquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="varchar" MaxLength="500" />
+          <Property Name="CurrentUserId" Type="int" />
+          <Property Name="TerminalEquipmentCategoryId" Type="int" Nullable="false" />
+          <Property Name="TerminalStatus" Type="int" />
+          <Property Name="TerminalVersion" Type="varchar" MaxLength="50" />
+          <Property Name="IsRegister" Type="int" />
+          <Property Name="TerminalIP" Type="varchar" MaxLength="50" />
+          <Property Name="TerminalPlatform" Type="varchar" MaxLength="50" />
+          <Property Name="DeviceCode" Type="varchar" MaxLength="500" />
+          <Property Name="TerminalName" Type="varchar" MaxLength="50" />
+          <Property Name="Layer" Type="int" />
+          <Property Name="AdvanceDownNum" Type="int" />
+          <Property Name="DownloadStartTime" Type="time" Precision="7" />
+          <Property Name="DownloadEndTime" Type="time" Precision="7" />
+          <Property Name="MainServerIP" Type="varchar" MaxLength="50" />
+          <Property Name="MainServerPort" Type="varchar" MaxLength="50" />
+          <Property Name="addressProvinceCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="addressCityCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="addressAreaCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="addressDetail" Type="varchar" MaxLength="500" />
+          <Property Name="JingDu" Type="varchar" MaxLength="50" />
+          <Property Name="WeiDu" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsSend" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalEquipmentSerialCommand">
+          <Key>
+            <PropertyRef Name="TerSerialCommandID" />
+          </Key>
+          <Property Name="TerSerialCommandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendAdminName" Type="varchar" MaxLength="50" />
+          <Property Name="SendTime" Type="datetime" />
+          <Property Name="CommandTypeId" Type="int" />
+          <Property Name="TerminalEquipmentID" Type="int" />
+          <Property Name="SendContent" Type="text" />
+          <Property Name="SendStatus" Type="int" />
+          <Property Name="ReceiveBackTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalSwitchScreenTime">
+          <Key>
+            <PropertyRef Name="TerminalSwitchScreenTimeID" />
+          </Key>
+          <Property Name="TerminalSwitchScreenTimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalEquipmentID" Type="int" Nullable="false" />
+          <Property Name="TurnOnTime" Type="time" Precision="7" />
+          <Property Name="TurnOffTime" Type="time" Precision="7" />
+          <Property Name="IsMonday" Type="bit" />
+          <Property Name="IsTuesday" Type="bit" />
+          <Property Name="IsWednesday" Type="bit" />
+          <Property Name="IsThursday" Type="bit" />
+          <Property Name="IsFriday" Type="bit" />
+          <Property Name="IsSaturday" Type="bit" />
+          <Property Name="IsSunday" Type="bit" />
+          <Property Name="IsEnable" Type="bit" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsSend" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_user_DrinkCostSerialList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="500" />
+          <Property Name="IcCardNo" Type="varchar" MaxLength="500" />
+          <Property Name="CostTime" Type="datetime" />
+          <Property Name="DeviceCode" Type="varchar" MaxLength="500" />
+          <Property Name="CostFee" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RunningWaterLitre" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CurrentUserBalance" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="jjj_user_OperatePower">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="OperatePowerId" Type="int" />
+        </EntityType>
+        <EntityType Name="jjj_usergroups">
+          <Key>
+            <PropertyRef Name="groupid" />
+          </Key>
+          <Property Name="groupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grouptitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="powerLevel" Type="int" />
+          <Property Name="joinCondition" Type="int" />
+          <Property Name="telephoneNum" Type="int" />
+          <Property Name="telFee100" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="telFee50" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="telFee30" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10316" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10317" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10319" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10320" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10321" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10322" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p10323" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11256" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11257" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11258" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11259" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11260" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11262" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11263" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="p11608" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="parentGroupId" Type="int" />
+          <Property Name="layer" Type="int" />
+          <Property Name="groupDescription" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="jjj_users">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="actualname" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="payPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="int" />
+          <Property Name="regip" Type="nvarchar" MaxLength="250" />
+          <Property Name="joindate" Type="smalldatetime" />
+          <Property Name="lastip" Type="nvarchar" MaxLength="250" />
+          <Property Name="lastvisit" Type="datetime" />
+          <Property Name="credits" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="bday" Type="datetime" />
+          <Property Name="showemail" Type="int" />
+          <Property Name="invisible" Type="int" />
+          <Property Name="newpm" Type="int" />
+          <Property Name="newpmcount" Type="int" />
+          <Property Name="onlinestate" Type="int" />
+          <Property Name="groupid" Type="int" />
+          <Property Name="avatarimageURL" Type="varchar" MaxLength="500" />
+          <Property Name="qq" Type="varchar" MaxLength="50" />
+          <Property Name="site" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="250" />
+          <Property Name="postCode" Type="varchar" MaxLength="10" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="HideCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="getPwdLastTime" Type="datetime" />
+          <Property Name="medals" Type="nvarchar" MaxLength="500" />
+          <Property Name="openId" Type="nvarchar" MaxLength="50" />
+          <Property Name="accessToken" Type="nvarchar" MaxLength="50" />
+          <Property Name="identityCard" Type="varchar" MaxLength="50" />
+          <Property Name="identityimageURL" Type="varchar" MaxLength="500" />
+          <Property Name="PassTicket" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="freezePassTicket" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="shopPassTicket" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="addressProvinceCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="addressCityCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="addressAreaCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="consigneeAddressId" Type="int" />
+          <Property Name="HengYuCode" Type="varchar" MaxLength="50" />
+          <Property Name="commendHengYuCode" Type="varchar" MaxLength="50" />
+          <Property Name="isOldUser" Type="int" />
+          <Property Name="isEnable" Type="int" />
+          <Property Name="acceptTime" Type="datetime" />
+          <Property Name="activeTime" Type="datetime" />
+          <Property Name="agentHengYuCode" Type="varchar" MaxLength="50" />
+          <Property Name="businessNum" Type="int" />
+          <Property Name="businessTotalNum" Type="int" />
+          <Property Name="regValidatecode" Type="varchar" MaxLength="50" />
+          <Property Name="ValidatecodeLastTime" Type="datetime" />
+          <Property Name="renwuOldSys" Type="varchar" MaxLength="50" />
+          <Property Name="phoneMSISDN" Type="varchar" MaxLength="50" />
+          <Property Name="phoneIMEI" Type="varchar" MaxLength="50" />
+          <Property Name="phoneModel" Type="varchar" MaxLength="50" />
+          <Property Name="phoneIMSI" Type="varchar" MaxLength="50" />
+          <Property Name="BossUid" Type="int" />
+          <Property Name="departmentId" Type="int" />
+          <Property Name="ZhiWu" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="500" />
+          <Property Name="baiduPush_responseParamID" Type="int" />
+          <Property Name="userNameRemark" Type="varchar" MaxLength="500" />
+          <Property Name="Signature" Type="varchar" MaxLength="500" />
+          <Property Name="tempPasswrod" Type="nvarchar" MaxLength="32" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="LoginInfo" Type="ntext" />
+          <Property Name="Power" Type="ntext" />
+          <Property Name="Vcard" Type="ntext" />
+          <Property Name="datetime" Type="datetime" />
+          <Property Name="OurMsgGroupID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentSecurityStatus" Type="int" />
+          <Property Name="WeiXin_UserName" Type="varchar" MaxLength="50" />
+          <Property Name="WeiXin_UserOpenID" Type="varchar" MaxLength="500" />
+          <Property Name="remark" Type="varchar" MaxLength="500" />
+          <Property Name="ucpaas_clientNum" Type="varchar" MaxLength="500" />
+          <Property Name="ucpaas_clientpwd" Type="varchar" MaxLength="500" />
+          <Property Name="TwoDimensionalCodeImg" Type="varchar" MaxLength="500" />
+          <Property Name="agentAdminHengYuCode" Type="varchar" MaxLength="200" />
+          <Property Name="WaitActivatedCredits" Type="int" />
+          <Property Name="ReserveCredits" Type="int" />
+          <Property Name="TempEmail" Type="varchar" MaxLength="50" />
+          <Property Name="ValidateEmailDatetime" Type="datetime" />
+          <Property Name="ValidateEmailGuid" Type="varchar" MaxLength="50" />
+          <Property Name="ValidateEmailStatus" Type="bit" />
+          <Property Name="AlterEmailDatetime" Type="datetime" />
+          <Property Name="AlterEmailGuid" Type="varchar" MaxLength="500" />
+          <Property Name="IsVipPrivilege" Type="int" />
+          <Property Name="ValidatePhoneStatus" Type="bit" />
+          <Property Name="JuHongBao" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="province">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="6" />
+          <Property Name="name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_jjj_adminsessions_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_adminsessions" Type="Self.jjj_adminsessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_adminsessions">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_MaterialManagement_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_MaterialManagement" Type="Self.jjj_MaterialManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_MaterialManagement">
+              <PropertyRef Name="CreateUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_MaterialManagementDetail_jjj_MaterialManagement">
+          <End Role="jjj_MaterialManagement" Type="Self.jjj_MaterialManagement" Multiplicity="1" />
+          <End Role="jjj_MaterialManagementDetail" Type="Self.jjj_MaterialManagementDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_MaterialManagement">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="jjj_MaterialManagementDetail">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_MaterialManagementDetail_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_MaterialManagementDetail" Type="Self.jjj_MaterialManagementDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_MaterialManagementDetail">
+              <PropertyRef Name="UploadUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem">
+          <End Role="jjj_ProgramInfoListItem" Type="Self.jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Role="jjj_ProgramInfoItem_DocumentDetail" Type="Self.jjj_ProgramInfoItem_DocumentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_DocumentDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem">
+          <End Role="jjj_ProgramInfoListItem" Type="Self.jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Role="jjj_ProgramInfoItem_TextDetail" Type="Self.jjj_ProgramInfoItem_TextDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_TextDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem">
+          <End Role="jjj_ProgramInfoListItem" Type="Self.jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Role="jjj_ProgramInfoItem_TimeDetail" Type="Self.jjj_ProgramInfoItem_TimeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_TimeDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem">
+          <End Role="jjj_ProgramInfoListItem" Type="Self.jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Role="jjj_ProgramInfoItem_VideoDetail" Type="Self.jjj_ProgramInfoItem_VideoDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_VideoDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList">
+          <End Role="jjj_ProgramInfoList" Type="Self.jjj_ProgramInfoList" Multiplicity="1" />
+          <End Role="jjj_ProgramInfoListItem" Type="Self.jjj_ProgramInfoListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoList">
+              <PropertyRef Name="ProgramInfoID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList">
+          <End Role="jjj_ProgramInfoList" Type="Self.jjj_ProgramInfoList" Multiplicity="1" />
+          <End Role="jjj_ProgramSendSerialList" Type="Self.jjj_ProgramSendSerialList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoList">
+              <PropertyRef Name="ProgramInfoID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramSendSerialList">
+              <PropertyRef Name="ProgramInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList">
+          <End Role="jjj_TerminalEquipmentList" Type="Self.jjj_TerminalEquipmentList" Multiplicity="1" />
+          <End Role="jjj_ProgramSendSerialList" Type="Self.jjj_ProgramSendSerialList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramSendSerialList">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory">
+          <End Role="jjj_TerminalEquipmentCategory" Type="Self.jjj_TerminalEquipmentCategory" Multiplicity="1" />
+          <End Role="jjj_TerminalEquipmentList" Type="Self.jjj_TerminalEquipmentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_TerminalEquipmentCategory">
+              <PropertyRef Name="TerminalEquipmentCategoryId" />
+            </Principal>
+            <Dependent Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="TerminalEquipmentCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_TerminalEquipmentList_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_TerminalEquipmentList" Type="Self.jjj_TerminalEquipmentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="CurrentUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList">
+          <End Role="jjj_TerminalEquipmentList" Type="Self.jjj_TerminalEquipmentList" Multiplicity="0..1" />
+          <End Role="jjj_TerminalEquipmentSerialCommand" Type="Self.jjj_TerminalEquipmentSerialCommand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Principal>
+            <Dependent Role="jjj_TerminalEquipmentSerialCommand">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower">
+          <End Role="jjj_BackgroundWeb_OperatePower" Type="Self.jjj_BackgroundWeb_OperatePower" Multiplicity="0..1" />
+          <End Role="jjj_user_OperatePower" Type="Self.jjj_user_OperatePower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_BackgroundWeb_OperatePower">
+              <PropertyRef Name="OperatePowerId" />
+            </Principal>
+            <Dependent Role="jjj_user_OperatePower">
+              <PropertyRef Name="OperatePowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_user_OperatePower_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_user_OperatePower" Type="Self.jjj_user_OperatePower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_user_OperatePower">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_users_jjj_usergroups">
+          <End Role="jjj_usergroups" Type="Self.jjj_usergroups" Multiplicity="0..1" />
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_usergroups">
+              <PropertyRef Name="groupid" />
+            </Principal>
+            <Dependent Role="jjj_users">
+              <PropertyRef Name="groupid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MultimediaSYSModelStoreContainer">
+          <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bankcode" EntityType="Self.bankcode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_adminsessions" EntityType="Self.jjj_adminsessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_BackgroundWeb_OperatePower" EntityType="Self.jjj_BackgroundWeb_OperatePower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_MaterialManagement" EntityType="Self.jjj_MaterialManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_MaterialManagementDetail" EntityType="Self.jjj_MaterialManagementDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoItem_DocumentDetail" EntityType="Self.jjj_ProgramInfoItem_DocumentDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoItem_ImageDetail" EntityType="Self.jjj_ProgramInfoItem_ImageDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoItem_TextDetail" EntityType="Self.jjj_ProgramInfoItem_TextDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoItem_TimeDetail" EntityType="Self.jjj_ProgramInfoItem_TimeDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoItem_VideoDetail" EntityType="Self.jjj_ProgramInfoItem_VideoDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoList" EntityType="Self.jjj_ProgramInfoList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramInfoListItem" EntityType="Self.jjj_ProgramInfoListItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_ProgramSendSerialList" EntityType="Self.jjj_ProgramSendSerialList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_TerminalEquipmentCategory" EntityType="Self.jjj_TerminalEquipmentCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_TerminalEquipmentList" EntityType="Self.jjj_TerminalEquipmentList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_TerminalEquipmentSerialCommand" EntityType="Self.jjj_TerminalEquipmentSerialCommand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_TerminalSwitchScreenTime" EntityType="Self.jjj_TerminalSwitchScreenTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_user_DrinkCostSerialList" EntityType="Self.jjj_user_DrinkCostSerialList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_user_OperatePower" EntityType="Self.jjj_user_OperatePower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_usergroups" EntityType="Self.jjj_usergroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jjj_users" EntityType="Self.jjj_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="province" EntityType="Self.province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_jjj_adminsessions_jjj_users" Association="Self.FK_jjj_adminsessions_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_adminsessions" EntitySet="jjj_adminsessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_MaterialManagement_jjj_users" Association="Self.FK_jjj_MaterialManagement_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_MaterialManagement" EntitySet="jjj_MaterialManagement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_MaterialManagementDetail_jjj_MaterialManagement" Association="Self.FK_jjj_MaterialManagementDetail_jjj_MaterialManagement">
+            <End Role="jjj_MaterialManagement" EntitySet="jjj_MaterialManagement" />
+            <End Role="jjj_MaterialManagementDetail" EntitySet="jjj_MaterialManagementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_MaterialManagementDetail_jjj_users" Association="Self.FK_jjj_MaterialManagementDetail_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_MaterialManagementDetail" EntitySet="jjj_MaterialManagementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem" Association="Self.FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_DocumentDetail" EntitySet="jjj_ProgramInfoItem_DocumentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem" Association="Self.FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_TextDetail" EntitySet="jjj_ProgramInfoItem_TextDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem" Association="Self.FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_TimeDetail" EntitySet="jjj_ProgramInfoItem_TimeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem" Association="Self.FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_VideoDetail" EntitySet="jjj_ProgramInfoItem_VideoDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList" Association="Self.FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList">
+            <End Role="jjj_ProgramInfoList" EntitySet="jjj_ProgramInfoList" />
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList" Association="Self.FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList">
+            <End Role="jjj_ProgramInfoList" EntitySet="jjj_ProgramInfoList" />
+            <End Role="jjj_ProgramSendSerialList" EntitySet="jjj_ProgramSendSerialList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList" Association="Self.FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList">
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+            <End Role="jjj_ProgramSendSerialList" EntitySet="jjj_ProgramSendSerialList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory" Association="Self.FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory">
+            <End Role="jjj_TerminalEquipmentCategory" EntitySet="jjj_TerminalEquipmentCategory" />
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_TerminalEquipmentList_jjj_users" Association="Self.FK_jjj_TerminalEquipmentList_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList" Association="Self.FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList">
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+            <End Role="jjj_TerminalEquipmentSerialCommand" EntitySet="jjj_TerminalEquipmentSerialCommand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower" Association="Self.FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower">
+            <End Role="jjj_BackgroundWeb_OperatePower" EntitySet="jjj_BackgroundWeb_OperatePower" />
+            <End Role="jjj_user_OperatePower" EntitySet="jjj_user_OperatePower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_user_OperatePower_jjj_users" Association="Self.FK_jjj_user_OperatePower_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_user_OperatePower" EntitySet="jjj_user_OperatePower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_users_jjj_usergroups" Association="Self.FK_jjj_users_jjj_usergroups">
+            <End Role="jjj_usergroups" EntitySet="jjj_usergroups" />
+            <End Role="jjj_users" EntitySet="jjj_users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MultimediaSYSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="cityId" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bankcode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="provinceId" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="jjj_adminsessions">
+          <Key>
+            <PropertyRef Name="adminsessionsId" />
+          </Key>
+          <Property Name="adminsessionsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="ip" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="dateline" Type="DateTime" Precision="3" />
+          <Property Name="errorCount" Type="Int32" />
+          <Property Name="allowDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="jjj_users" Relationship="Self.FK_jjj_adminsessions_jjj_users" FromRole="jjj_adminsessions" ToRole="jjj_users" />
+        </EntityType>
+        <EntityType Name="jjj_BackgroundWeb_OperatePower">
+          <Key>
+            <PropertyRef Name="OperatePowerId" />
+          </Key>
+          <Property Name="OperatePowerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperatePowerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatePowerURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentOperatePowerId" Type="Int32" />
+          <Property Name="layer" Type="Int32" />
+          <NavigationProperty Name="jjj_user_OperatePower" Relationship="Self.FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower" FromRole="jjj_BackgroundWeb_OperatePower" ToRole="jjj_user_OperatePower" />
+        </EntityType>
+        <EntityType Name="jjj_MaterialManagement">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialFolderName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="parentId" Type="Int32" />
+          <Property Name="layer" Type="Int32" />
+          <Property Name="updateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <NavigationProperty Name="jjj_users" Relationship="Self.FK_jjj_MaterialManagement_jjj_users" FromRole="jjj_MaterialManagement" ToRole="jjj_users" />
+          <NavigationProperty Name="jjj_MaterialManagementDetail" Relationship="Self.FK_jjj_MaterialManagementDetail_jjj_MaterialManagement" FromRole="jjj_MaterialManagement" ToRole="jjj_MaterialManagementDetail" />
+          <Property Name="SouthWing_MaterialID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_MaterialManagementDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FileType" Type="Int32" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FileSuffixName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UploadTime" Type="DateTime" Precision="3" />
+          <Property Name="UploadUserId" Type="Int32" />
+          <NavigationProperty Name="jjj_MaterialManagement" Relationship="Self.FK_jjj_MaterialManagementDetail_jjj_MaterialManagement" FromRole="jjj_MaterialManagementDetail" ToRole="jjj_MaterialManagement" />
+          <NavigationProperty Name="jjj_users" Relationship="Self.FK_jjj_MaterialManagementDetail_jjj_users" FromRole="jjj_MaterialManagementDetail" ToRole="jjj_users" />
+          <Property Name="TransformFilePath" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="TransformFileSuffixName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ThumbnailImgPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalEquipmentCategory">
+          <Key>
+            <PropertyRef Name="TerminalEquipmentCategoryId" />
+          </Key>
+          <Property Name="TerminalEquipmentCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalEquipmentCategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Layer" Type="Int32" />
+          <NavigationProperty Name="jjj_TerminalEquipmentList" Relationship="Self.FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory" FromRole="jjj_TerminalEquipmentCategory" ToRole="jjj_TerminalEquipmentList" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalEquipmentList">
+          <Key>
+            <PropertyRef Name="TerminalEquipmentID" />
+          </Key>
+          <Property Name="TerminalEquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentUserId" Type="Int32" />
+          <Property Name="TerminalEquipmentCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="TerminalStatus" Type="Int32" />
+          <Property Name="TerminalVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsRegister" Type="Int32" />
+          <Property Name="TerminalIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalPlatform" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TerminalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Layer" Type="Int32" />
+          <Property Name="AdvanceDownNum" Type="Int32" />
+          <Property Name="MainServerIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MainServerPort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="jjj_TerminalEquipmentCategory" Relationship="Self.FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory" FromRole="jjj_TerminalEquipmentList" ToRole="jjj_TerminalEquipmentCategory" />
+          <NavigationProperty Name="jjj_users" Relationship="Self.FK_jjj_TerminalEquipmentList_jjj_users" FromRole="jjj_TerminalEquipmentList" ToRole="jjj_users" />
+          <NavigationProperty Name="jjj_TerminalEquipmentSerialCommand" Relationship="MultimediaSYSModel.FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList" FromRole="jjj_TerminalEquipmentList" ToRole="jjj_TerminalEquipmentSerialCommand" />
+          <NavigationProperty Name="jjj_ProgramSendSerialList" Relationship="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList" FromRole="jjj_TerminalEquipmentList" ToRole="jjj_ProgramSendSerialList" />
+          <Property Name="DownloadStartTime" Type="Time" Precision="7" />
+          <Property Name="DownloadEndTime" Type="Time" Precision="7" />
+          <Property Name="addressProvinceCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="addressCityCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="addressAreaCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="addressDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="JingDu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WeiDu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSend" Type="Int32" />
+        </EntityType>
+        <EntityType Name="jjj_user_OperatePower">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="OperatePowerId" Type="Int32" />
+          <NavigationProperty Name="jjj_BackgroundWeb_OperatePower" Relationship="Self.FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower" FromRole="jjj_user_OperatePower" ToRole="jjj_BackgroundWeb_OperatePower" />
+          <NavigationProperty Name="jjj_users" Relationship="Self.FK_jjj_user_OperatePower_jjj_users" FromRole="jjj_user_OperatePower" ToRole="jjj_users" />
+        </EntityType>
+        <EntityType Name="jjj_usergroups">
+          <Key>
+            <PropertyRef Name="groupid" />
+          </Key>
+          <Property Name="groupid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grouptitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="powerLevel" Type="Int32" />
+          <Property Name="joinCondition" Type="Int32" />
+          <Property Name="telephoneNum" Type="Int32" />
+          <Property Name="telFee100" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="telFee50" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="telFee30" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10316" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10317" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10319" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10320" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10321" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10322" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p10323" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11256" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11257" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11258" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11259" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11260" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11262" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11263" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="p11608" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="jjj_users" Relationship="Self.FK_jjj_users_jjj_usergroups" FromRole="jjj_usergroups" ToRole="jjj_users" />
+          <Property Name="parentGroupId" Type="Int32" />
+          <Property Name="layer" Type="Int32" />
+          <Property Name="groupDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_users">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="actualname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="payPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="regip" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="joindate" Type="DateTime" Precision="0" />
+          <Property Name="lastip" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="lastvisit" Type="DateTime" Precision="3" />
+          <Property Name="credits" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bday" Type="DateTime" Precision="3" />
+          <Property Name="showemail" Type="Int32" />
+          <Property Name="invisible" Type="Int32" />
+          <Property Name="newpm" Type="Int32" />
+          <Property Name="newpmcount" Type="Int32" />
+          <Property Name="onlinestate" Type="Int32" />
+          <Property Name="groupid" Type="Int32" />
+          <Property Name="avatarimageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="postCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HideCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="getPwdLastTime" Type="DateTime" Precision="3" />
+          <Property Name="medals" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="openId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="accessToken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="identityCard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="identityimageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PassTicket" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="freezePassTicket" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="shopPassTicket" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="addressProvinceCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="addressCityCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="addressAreaCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="consigneeAddressId" Type="Int32" />
+          <Property Name="HengYuCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="commendHengYuCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isOldUser" Type="Int32" />
+          <Property Name="isEnable" Type="Int32" />
+          <Property Name="acceptTime" Type="DateTime" Precision="3" />
+          <Property Name="activeTime" Type="DateTime" Precision="3" />
+          <Property Name="agentHengYuCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="businessNum" Type="Int32" />
+          <Property Name="businessTotalNum" Type="Int32" />
+          <Property Name="regValidatecode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValidatecodeLastTime" Type="DateTime" Precision="3" />
+          <Property Name="renwuOldSys" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneMSISDN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneIMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneIMSI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BossUid" Type="Int32" />
+          <Property Name="departmentId" Type="Int32" />
+          <Property Name="ZhiWu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="baiduPush_responseParamID" Type="Int32" />
+          <Property Name="userNameRemark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Signature" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="tempPasswrod" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="LoginInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Power" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vcard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Precision="3" />
+          <Property Name="OurMsgGroupID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentSecurityStatus" Type="Int32" />
+          <Property Name="WeiXin_UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WeiXin_UserOpenID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ucpaas_clientNum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ucpaas_clientpwd" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TwoDimensionalCodeImg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="agentAdminHengYuCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="WaitActivatedCredits" Type="Int32" />
+          <Property Name="ReserveCredits" Type="Int32" />
+          <Property Name="TempEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValidateEmailDatetime" Type="DateTime" Precision="3" />
+          <Property Name="ValidateEmailGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValidateEmailStatus" Type="Boolean" />
+          <Property Name="AlterEmailDatetime" Type="DateTime" Precision="3" />
+          <Property Name="AlterEmailGuid" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsVipPrivilege" Type="Int32" />
+          <Property Name="ValidatePhoneStatus" Type="Boolean" />
+          <Property Name="JuHongBao" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="jjj_adminsessions" Relationship="Self.FK_jjj_adminsessions_jjj_users" FromRole="jjj_users" ToRole="jjj_adminsessions" />
+          <NavigationProperty Name="jjj_MaterialManagement" Relationship="Self.FK_jjj_MaterialManagement_jjj_users" FromRole="jjj_users" ToRole="jjj_MaterialManagement" />
+          <NavigationProperty Name="jjj_MaterialManagementDetail" Relationship="Self.FK_jjj_MaterialManagementDetail_jjj_users" FromRole="jjj_users" ToRole="jjj_MaterialManagementDetail" />
+          <NavigationProperty Name="jjj_TerminalEquipmentList" Relationship="Self.FK_jjj_TerminalEquipmentList_jjj_users" FromRole="jjj_users" ToRole="jjj_TerminalEquipmentList" />
+          <NavigationProperty Name="jjj_user_OperatePower" Relationship="Self.FK_jjj_user_OperatePower_jjj_users" FromRole="jjj_users" ToRole="jjj_user_OperatePower" />
+          <NavigationProperty Name="jjj_usergroups" Relationship="Self.FK_jjj_users_jjj_usergroups" FromRole="jjj_users" ToRole="jjj_usergroups" />
+        </EntityType>
+        <EntityType Name="province">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_jjj_adminsessions_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_adminsessions" Type="Self.jjj_adminsessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_adminsessions">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower">
+          <End Role="jjj_BackgroundWeb_OperatePower" Type="Self.jjj_BackgroundWeb_OperatePower" Multiplicity="0..1" />
+          <End Role="jjj_user_OperatePower" Type="Self.jjj_user_OperatePower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_BackgroundWeb_OperatePower">
+              <PropertyRef Name="OperatePowerId" />
+            </Principal>
+            <Dependent Role="jjj_user_OperatePower">
+              <PropertyRef Name="OperatePowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_MaterialManagement_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_MaterialManagement" Type="Self.jjj_MaterialManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_MaterialManagement">
+              <PropertyRef Name="CreateUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_MaterialManagementDetail_jjj_MaterialManagement">
+          <End Role="jjj_MaterialManagement" Type="Self.jjj_MaterialManagement" Multiplicity="1" />
+          <End Role="jjj_MaterialManagementDetail" Type="Self.jjj_MaterialManagementDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_MaterialManagement">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="jjj_MaterialManagementDetail">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_MaterialManagementDetail_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_MaterialManagementDetail" Type="Self.jjj_MaterialManagementDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_MaterialManagementDetail">
+              <PropertyRef Name="UploadUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory">
+          <End Role="jjj_TerminalEquipmentCategory" Type="Self.jjj_TerminalEquipmentCategory" Multiplicity="1" />
+          <End Role="jjj_TerminalEquipmentList" Type="Self.jjj_TerminalEquipmentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_TerminalEquipmentCategory">
+              <PropertyRef Name="TerminalEquipmentCategoryId" />
+            </Principal>
+            <Dependent Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="TerminalEquipmentCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_TerminalEquipmentList_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_TerminalEquipmentList" Type="Self.jjj_TerminalEquipmentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="CurrentUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_user_OperatePower_jjj_users">
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="0..1" />
+          <End Role="jjj_user_OperatePower" Type="Self.jjj_user_OperatePower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="jjj_user_OperatePower">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_users_jjj_usergroups">
+          <End Role="jjj_usergroups" Type="Self.jjj_usergroups" Multiplicity="0..1" />
+          <End Role="jjj_users" Type="Self.jjj_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_usergroups">
+              <PropertyRef Name="groupid" />
+            </Principal>
+            <Dependent Role="jjj_users">
+              <PropertyRef Name="groupid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MultimediaSYSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="area" EntityType="Self.area" />
+          <EntitySet Name="bankcode" EntityType="Self.bankcode" />
+          <EntitySet Name="city" EntityType="Self.city" />
+          <EntitySet Name="jjj_adminsessions" EntityType="Self.jjj_adminsessions" />
+          <EntitySet Name="jjj_BackgroundWeb_OperatePower" EntityType="Self.jjj_BackgroundWeb_OperatePower" />
+          <EntitySet Name="jjj_MaterialManagement" EntityType="Self.jjj_MaterialManagement" />
+          <EntitySet Name="jjj_MaterialManagementDetail" EntityType="Self.jjj_MaterialManagementDetail" />
+          <EntitySet Name="jjj_TerminalEquipmentCategory" EntityType="Self.jjj_TerminalEquipmentCategory" />
+          <EntitySet Name="jjj_TerminalEquipmentList" EntityType="Self.jjj_TerminalEquipmentList" />
+          <EntitySet Name="jjj_user_OperatePower" EntityType="Self.jjj_user_OperatePower" />
+          <EntitySet Name="jjj_usergroups" EntityType="Self.jjj_usergroups" />
+          <EntitySet Name="jjj_users" EntityType="Self.jjj_users" />
+          <EntitySet Name="province" EntityType="Self.province" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_jjj_adminsessions_jjj_users" Association="Self.FK_jjj_adminsessions_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_adminsessions" EntitySet="jjj_adminsessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower" Association="Self.FK_jjj_user_OperatePower_jjj_BackgroundWeb_OperatePower">
+            <End Role="jjj_BackgroundWeb_OperatePower" EntitySet="jjj_BackgroundWeb_OperatePower" />
+            <End Role="jjj_user_OperatePower" EntitySet="jjj_user_OperatePower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_MaterialManagement_jjj_users" Association="Self.FK_jjj_MaterialManagement_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_MaterialManagement" EntitySet="jjj_MaterialManagement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_MaterialManagementDetail_jjj_MaterialManagement" Association="Self.FK_jjj_MaterialManagementDetail_jjj_MaterialManagement">
+            <End Role="jjj_MaterialManagement" EntitySet="jjj_MaterialManagement" />
+            <End Role="jjj_MaterialManagementDetail" EntitySet="jjj_MaterialManagementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_MaterialManagementDetail_jjj_users" Association="Self.FK_jjj_MaterialManagementDetail_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_MaterialManagementDetail" EntitySet="jjj_MaterialManagementDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory" Association="Self.FK_jjj_TerminalEquipmentList_jjj_TerminalEquipmentCategory">
+            <End Role="jjj_TerminalEquipmentCategory" EntitySet="jjj_TerminalEquipmentCategory" />
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_TerminalEquipmentList_jjj_users" Association="Self.FK_jjj_TerminalEquipmentList_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_user_OperatePower_jjj_users" Association="Self.FK_jjj_user_OperatePower_jjj_users">
+            <End Role="jjj_users" EntitySet="jjj_users" />
+            <End Role="jjj_user_OperatePower" EntitySet="jjj_user_OperatePower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_users_jjj_usergroups" Association="Self.FK_jjj_users_jjj_usergroups">
+            <End Role="jjj_usergroups" EntitySet="jjj_usergroups" />
+            <End Role="jjj_users" EntitySet="jjj_users" />
+          </AssociationSet>
+          <EntitySet Name="jjj_TerminalEquipmentSerialCommand" EntityType="MultimediaSYSModel.jjj_TerminalEquipmentSerialCommand" />
+          <AssociationSet Name="FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList" Association="MultimediaSYSModel.FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList">
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+            <End Role="jjj_TerminalEquipmentSerialCommand" EntitySet="jjj_TerminalEquipmentSerialCommand" />
+          </AssociationSet>
+          <EntitySet Name="jjj_ProgramInfoItem_DocumentDetail" EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_DocumentDetail" />
+          <EntitySet Name="jjj_ProgramInfoItem_ImageDetail" EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_ImageDetail" />
+          <EntitySet Name="jjj_ProgramInfoItem_TextDetail" EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_TextDetail" />
+          <EntitySet Name="jjj_ProgramInfoItem_TimeDetail" EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_TimeDetail" />
+          <EntitySet Name="jjj_ProgramInfoItem_VideoDetail" EntityType="MultimediaSYSModel.jjj_ProgramInfoItem_VideoDetail" />
+          <EntitySet Name="jjj_ProgramInfoList" EntityType="MultimediaSYSModel.jjj_ProgramInfoList" />
+          <EntitySet Name="jjj_ProgramInfoListItem" EntityType="MultimediaSYSModel.jjj_ProgramInfoListItem" />
+          <EntitySet Name="jjj_ProgramSendSerialList" EntityType="MultimediaSYSModel.jjj_ProgramSendSerialList" />
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem" Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_DocumentDetail" EntitySet="jjj_ProgramInfoItem_DocumentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem" Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_TextDetail" EntitySet="jjj_ProgramInfoItem_TextDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem" Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_TimeDetail" EntitySet="jjj_ProgramInfoItem_TimeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem" Association="MultimediaSYSModel.FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem">
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+            <End Role="jjj_ProgramInfoItem_VideoDetail" EntitySet="jjj_ProgramInfoItem_VideoDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList" Association="MultimediaSYSModel.FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList">
+            <End Role="jjj_ProgramInfoList" EntitySet="jjj_ProgramInfoList" />
+            <End Role="jjj_ProgramInfoListItem" EntitySet="jjj_ProgramInfoListItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList" Association="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList">
+            <End Role="jjj_ProgramInfoList" EntitySet="jjj_ProgramInfoList" />
+            <End Role="jjj_ProgramSendSerialList" EntitySet="jjj_ProgramSendSerialList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList" Association="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList">
+            <End Role="jjj_TerminalEquipmentList" EntitySet="jjj_TerminalEquipmentList" />
+            <End Role="jjj_ProgramSendSerialList" EntitySet="jjj_ProgramSendSerialList" />
+          </AssociationSet>
+          <EntitySet Name="jjj_user_DrinkCostSerialList" EntityType="MultimediaSYSModel.jjj_user_DrinkCostSerialList" />
+          <EntitySet Name="jjj_TerminalSwitchScreenTime" EntityType="MultimediaSYSModel.jjj_TerminalSwitchScreenTime" />
+        </EntityContainer>
+        <EntityType Name="jjj_TerminalEquipmentSerialCommand">
+          <Key>
+            <PropertyRef Name="TerSerialCommandID" />
+          </Key>
+          <Property Name="TerSerialCommandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendAdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SendTime" Type="DateTime" Precision="3" />
+          <Property Name="CommandTypeId" Type="Int32" />
+          <Property Name="TerminalEquipmentID" Type="Int32" />
+          <Property Name="SendContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SendStatus" Type="Int32" />
+          <Property Name="ReceiveBackTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="jjj_TerminalEquipmentList" Relationship="MultimediaSYSModel.FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList" FromRole="jjj_TerminalEquipmentSerialCommand" ToRole="jjj_TerminalEquipmentList" />
+        </EntityType>
+        <Association Name="FK_jjj_TerminalEquipmentSerialCommand_jjj_TerminalEquipmentList">
+          <End Type="MultimediaSYSModel.jjj_TerminalEquipmentList" Role="jjj_TerminalEquipmentList" Multiplicity="0..1" />
+          <End Type="MultimediaSYSModel.jjj_TerminalEquipmentSerialCommand" Role="jjj_TerminalEquipmentSerialCommand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Principal>
+            <Dependent Role="jjj_TerminalEquipmentSerialCommand">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="jjj_ProgramInfoItem_DocumentDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramInfoItemID" Type="Int32" Nullable="false" />
+          <Property Name="DocumentLayer" Type="Int32" />
+          <Property Name="TimeLength" Type="Int32" />
+          <Property Name="CartoonType" Type="Int32" />
+          <Property Name="DocumentUrl" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="jjj_ProgramInfoListItem" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoItem_DocumentDetail" ToRole="jjj_ProgramInfoListItem" />
+          <Property Name="ProgramInfoItemDocumentClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_ProgramInfoItemDocument_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_ImageDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramInfoItemID" Type="Int32" Nullable="false" />
+          <Property Name="ImageLayer" Type="Int32" />
+          <Property Name="TimeLength" Type="Int32" />
+          <Property Name="CartoonType" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Name="animation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramInfoItemImageClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_ProgramInfoItemImage_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_TextDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramInfoItemID" Type="Int32" Nullable="false" />
+          <Property Name="TextLayer" Type="Int32" />
+          <Property Name="TextContent" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="TextDirectionType" Type="Int32" />
+          <Property Name="IsBackgroundTransparent" Type="Int32" />
+          <Property Name="BackgroundColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foreColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsBold" Type="Int32" />
+          <Property Name="FontFamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FontSize" Type="Int32" />
+          <Property Name="PlayCount" Type="Int32" />
+          <Property Name="PlaySpeed" Type="Int32" />
+          <NavigationProperty Name="jjj_ProgramInfoListItem" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoItem_TextDetail" ToRole="jjj_ProgramInfoListItem" />
+          <Property Name="ProgramInfoItemTextClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_ProgramInfoItemText_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_TimeDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramInfoItemID" Type="Int32" Nullable="false" />
+          <Property Name="FontFamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FontSize" Type="Int32" />
+          <Property Name="FontFormat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsBackgroundTransparent" Type="Int32" />
+          <Property Name="IsBold" Type="Int32" />
+          <Property Name="BackgroundColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foreColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="jjj_ProgramInfoListItem" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoItem_TimeDetail" ToRole="jjj_ProgramInfoListItem" />
+          <Property Name="ProgramInfoItemTimeClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_ProgramInfoItemTime_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoItem_VideoDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramInfoItemID" Type="Int32" Nullable="false" />
+          <Property Name="VideoLayer" Type="Int32" />
+          <Property Name="VideoVoice" Type="Int32" />
+          <Property Name="VideoUrl" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="jjj_ProgramInfoListItem" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoItem_VideoDetail" ToRole="jjj_ProgramInfoListItem" />
+          <Property Name="ProgramInfoItemVideoClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_ProgramInfoItemVideo_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoList">
+          <Key>
+            <PropertyRef Name="ProgramInfoID" />
+          </Key>
+          <Property Name="ProgramInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramWidth" Type="Int32" />
+          <Property Name="ProgramHeight" Type="Int32" />
+          <Property Name="ProgramStatus" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <NavigationProperty Name="jjj_ProgramInfoListItem" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList" FromRole="jjj_ProgramInfoList" ToRole="jjj_ProgramInfoListItem" />
+          <NavigationProperty Name="jjj_ProgramSendSerialList" Relationship="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList" FromRole="jjj_ProgramInfoList" ToRole="jjj_ProgramSendSerialList" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="ProgramClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_Program_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_Container_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerLayout" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramInfoListItem">
+          <Key>
+            <PropertyRef Name="ProgramInfoItemID" />
+          </Key>
+          <Property Name="ProgramInfoItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramInfoID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramInfoItemType" Type="Int32" />
+          <Property Name="ProgramInfoItemTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramInfoItemLeft" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProgramInfoItemTop" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProgramInfoItemWidth" Type="Int32" />
+          <Property Name="ProgramInfoItemHeight" Type="Int32" />
+          <Property Name="ProgramInfoItemLayer" Type="Int32" />
+          <NavigationProperty Name="jjj_ProgramInfoItem_DocumentDetail" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoListItem" ToRole="jjj_ProgramInfoItem_DocumentDetail" />
+          <NavigationProperty Name="jjj_ProgramInfoItem_TextDetail" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoListItem" ToRole="jjj_ProgramInfoItem_TextDetail" />
+          <NavigationProperty Name="jjj_ProgramInfoItem_TimeDetail" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoListItem" ToRole="jjj_ProgramInfoItem_TimeDetail" />
+          <NavigationProperty Name="jjj_ProgramInfoItem_VideoDetail" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem" FromRole="jjj_ProgramInfoListItem" ToRole="jjj_ProgramInfoItem_VideoDetail" />
+          <NavigationProperty Name="jjj_ProgramInfoList" Relationship="MultimediaSYSModel.FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList" FromRole="jjj_ProgramInfoListItem" ToRole="jjj_ProgramInfoList" />
+          <Property Name="IsShowWater" Type="Int32" />
+          <Property Name="ProgramInfoItemClientId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Second_ProgramInfoItem_ServerBack" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TopMost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="jjj_ProgramSendSerialList">
+          <Key>
+            <PropertyRef Name="ProgramSendSerialID" />
+          </Key>
+          <Property Name="ProgramSendSerialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalEquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramInfoID" Type="Int32" Nullable="false" />
+          <Property Name="SendStatus" Type="Int32" />
+          <Property Name="EfficaciousDateStart" Type="DateTime" Precision="0" />
+          <Property Name="EfficaciousDateEnd" Type="DateTime" Precision="0" />
+          <Property Name="EfficaciousTimeStart" Type="Time" Precision="7" />
+          <Property Name="EfficaciousTimeEnd" Type="Time" Precision="7" />
+          <NavigationProperty Name="jjj_ProgramInfoList" Relationship="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList" FromRole="jjj_ProgramSendSerialList" ToRole="jjj_ProgramInfoList" />
+          <NavigationProperty Name="jjj_TerminalEquipmentList" Relationship="MultimediaSYSModel.FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList" FromRole="jjj_ProgramSendSerialList" ToRole="jjj_TerminalEquipmentList" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ReceiveBackTime" Type="DateTime" Precision="3" />
+          <Property Name="DownloadOverTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_jjj_ProgramInfoItem_DocumentDetail_jjj_ProgramInfoListItem">
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoListItem" Role="jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoItem_DocumentDetail" Role="jjj_ProgramInfoItem_DocumentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_DocumentDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_TextDetail_jjj_ProgramInfoListItem">
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoListItem" Role="jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoItem_TextDetail" Role="jjj_ProgramInfoItem_TextDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_TextDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_TimeDetail_jjj_ProgramInfoListItem">
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoListItem" Role="jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoItem_TimeDetail" Role="jjj_ProgramInfoItem_TimeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_TimeDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoItem_VideoDetail_jjj_ProgramInfoListItem">
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoListItem" Role="jjj_ProgramInfoListItem" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoItem_VideoDetail" Role="jjj_ProgramInfoItem_VideoDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoItem_VideoDetail">
+              <PropertyRef Name="ProgramInfoItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramInfoListItem_jjj_ProgramInfoList">
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoList" Role="jjj_ProgramInfoList" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoListItem" Role="jjj_ProgramInfoListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoList">
+              <PropertyRef Name="ProgramInfoID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramInfoListItem">
+              <PropertyRef Name="ProgramInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramSendSerialList_jjj_ProgramInfoList">
+          <End Type="MultimediaSYSModel.jjj_ProgramInfoList" Role="jjj_ProgramInfoList" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramSendSerialList" Role="jjj_ProgramSendSerialList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_ProgramInfoList">
+              <PropertyRef Name="ProgramInfoID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramSendSerialList">
+              <PropertyRef Name="ProgramInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_jjj_ProgramSendSerialList_jjj_TerminalEquipmentList">
+          <End Type="MultimediaSYSModel.jjj_TerminalEquipmentList" Role="jjj_TerminalEquipmentList" Multiplicity="1" />
+          <End Type="MultimediaSYSModel.jjj_ProgramSendSerialList" Role="jjj_ProgramSendSerialList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jjj_TerminalEquipmentList">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Principal>
+            <Dependent Role="jjj_ProgramSendSerialList">
+              <PropertyRef Name="TerminalEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="jjj_user_DrinkCostSerialList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IcCardNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CostTime" Type="DateTime" Precision="3" />
+          <Property Name="DeviceCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CostFee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RunningWaterLitre" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CurrentUserBalance" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="jjj_TerminalSwitchScreenTime">
+          <Key>
+            <PropertyRef Name="TerminalSwitchScreenTimeID" />
+          </Key>
+          <Property Name="TerminalSwitchScreenTimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalEquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="TurnOnTime" Type="Time" Precision="7" />
+          <Property Name="TurnOffTime" Type="Time" Precision="7" />
+          <Property Name="IsMonday" Type="Boolean" />
+          <Property Name="IsTuesday" Type="Boolean" />
+          <Property Name="IsWednesday" Type="Boolean" />
+          <Property Name="IsThursday" Type="Boolean" />
+          <Property Name="IsFriday" Type="Boolean" />
+          <Property Name="IsSaturday" Type="Boolean" />
+          <Property Name="IsSunday" Type="Boolean" />
+          <Property Name="IsEnable" Type="Boolean" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSend" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MultimediaSYSModelStoreContainer" CdmEntityContainer="MultimediaSYSEntities">
+          <EntitySetMapping Name="area">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.area">
+              <MappingFragment StoreEntitySet="area">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bankcode">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.bankcode">
+              <MappingFragment StoreEntitySet="bankcode">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="provinceId" ColumnName="provinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_adminsessions">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_adminsessions">
+              <MappingFragment StoreEntitySet="jjj_adminsessions">
+                <ScalarProperty Name="adminsessionsId" ColumnName="adminsessionsId" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="dateline" ColumnName="dateline" />
+                <ScalarProperty Name="errorCount" ColumnName="errorCount" />
+                <ScalarProperty Name="allowDate" ColumnName="allowDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_BackgroundWeb_OperatePower">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_BackgroundWeb_OperatePower">
+              <MappingFragment StoreEntitySet="jjj_BackgroundWeb_OperatePower">
+                <ScalarProperty Name="OperatePowerId" ColumnName="OperatePowerId" />
+                <ScalarProperty Name="OperatePowerName" ColumnName="OperatePowerName" />
+                <ScalarProperty Name="OperatePowerURL" ColumnName="OperatePowerURL" />
+                <ScalarProperty Name="ParentOperatePowerId" ColumnName="ParentOperatePowerId" />
+                <ScalarProperty Name="layer" ColumnName="layer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_MaterialManagement">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_MaterialManagement">
+              <MappingFragment StoreEntitySet="jjj_MaterialManagement">
+                <ScalarProperty Name="SouthWing_MaterialID" ColumnName="SouthWing_MaterialID" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="MaterialFolderName" ColumnName="MaterialFolderName" />
+                <ScalarProperty Name="parentId" ColumnName="parentId" />
+                <ScalarProperty Name="layer" ColumnName="layer" />
+                <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_MaterialManagementDetail">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_MaterialManagementDetail">
+              <MappingFragment StoreEntitySet="jjj_MaterialManagementDetail">
+                <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+                <ScalarProperty Name="ThumbnailImgPath" ColumnName="ThumbnailImgPath" />
+                <ScalarProperty Name="TransformFileSuffixName" ColumnName="TransformFileSuffixName" />
+                <ScalarProperty Name="TransformFilePath" ColumnName="TransformFilePath" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileSuffixName" ColumnName="FileSuffixName" />
+                <ScalarProperty Name="UploadTime" ColumnName="UploadTime" />
+                <ScalarProperty Name="UploadUserId" ColumnName="UploadUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_TerminalEquipmentCategory">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_TerminalEquipmentCategory">
+              <MappingFragment StoreEntitySet="jjj_TerminalEquipmentCategory">
+                <ScalarProperty Name="TerminalEquipmentCategoryId" ColumnName="TerminalEquipmentCategoryId" />
+                <ScalarProperty Name="TerminalEquipmentCategoryName" ColumnName="TerminalEquipmentCategoryName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Layer" ColumnName="Layer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_TerminalEquipmentList">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_TerminalEquipmentList">
+              <MappingFragment StoreEntitySet="jjj_TerminalEquipmentList">
+                <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="WeiDu" ColumnName="WeiDu" />
+                <ScalarProperty Name="JingDu" ColumnName="JingDu" />
+                <ScalarProperty Name="addressDetail" ColumnName="addressDetail" />
+                <ScalarProperty Name="addressAreaCode" ColumnName="addressAreaCode" />
+                <ScalarProperty Name="addressCityCode" ColumnName="addressCityCode" />
+                <ScalarProperty Name="addressProvinceCode" ColumnName="addressProvinceCode" />
+                <ScalarProperty Name="DownloadEndTime" ColumnName="DownloadEndTime" />
+                <ScalarProperty Name="DownloadStartTime" ColumnName="DownloadStartTime" />
+                <ScalarProperty Name="TerminalEquipmentID" ColumnName="TerminalEquipmentID" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="CurrentUserId" ColumnName="CurrentUserId" />
+                <ScalarProperty Name="TerminalEquipmentCategoryId" ColumnName="TerminalEquipmentCategoryId" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="TerminalVersion" ColumnName="TerminalVersion" />
+                <ScalarProperty Name="IsRegister" ColumnName="IsRegister" />
+                <ScalarProperty Name="TerminalIP" ColumnName="TerminalIP" />
+                <ScalarProperty Name="TerminalPlatform" ColumnName="TerminalPlatform" />
+                <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+                <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+                <ScalarProperty Name="Layer" ColumnName="Layer" />
+                <ScalarProperty Name="AdvanceDownNum" ColumnName="AdvanceDownNum" />
+                <ScalarProperty Name="MainServerIP" ColumnName="MainServerIP" />
+                <ScalarProperty Name="MainServerPort" ColumnName="MainServerPort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_user_OperatePower">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_user_OperatePower">
+              <MappingFragment StoreEntitySet="jjj_user_OperatePower">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="OperatePowerId" ColumnName="OperatePowerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_usergroups">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_usergroups">
+              <MappingFragment StoreEntitySet="jjj_usergroups">
+                <ScalarProperty Name="groupDescription" ColumnName="groupDescription" />
+                <ScalarProperty Name="layer" ColumnName="layer" />
+                <ScalarProperty Name="parentGroupId" ColumnName="parentGroupId" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="grouptitle" ColumnName="grouptitle" />
+                <ScalarProperty Name="powerLevel" ColumnName="powerLevel" />
+                <ScalarProperty Name="joinCondition" ColumnName="joinCondition" />
+                <ScalarProperty Name="telephoneNum" ColumnName="telephoneNum" />
+                <ScalarProperty Name="telFee100" ColumnName="telFee100" />
+                <ScalarProperty Name="telFee50" ColumnName="telFee50" />
+                <ScalarProperty Name="telFee30" ColumnName="telFee30" />
+                <ScalarProperty Name="p10316" ColumnName="p10316" />
+                <ScalarProperty Name="p10317" ColumnName="p10317" />
+                <ScalarProperty Name="p10319" ColumnName="p10319" />
+                <ScalarProperty Name="p10320" ColumnName="p10320" />
+                <ScalarProperty Name="p10321" ColumnName="p10321" />
+                <ScalarProperty Name="p10322" ColumnName="p10322" />
+                <ScalarProperty Name="p10323" ColumnName="p10323" />
+                <ScalarProperty Name="p11256" ColumnName="p11256" />
+                <ScalarProperty Name="p11257" ColumnName="p11257" />
+                <ScalarProperty Name="p11258" ColumnName="p11258" />
+                <ScalarProperty Name="p11259" ColumnName="p11259" />
+                <ScalarProperty Name="p11260" ColumnName="p11260" />
+                <ScalarProperty Name="p11262" ColumnName="p11262" />
+                <ScalarProperty Name="p11263" ColumnName="p11263" />
+                <ScalarProperty Name="p11608" ColumnName="p11608" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_users">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_users">
+              <MappingFragment StoreEntitySet="jjj_users">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="actualname" ColumnName="actualname" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="payPassword" ColumnName="payPassword" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="regip" ColumnName="regip" />
+                <ScalarProperty Name="joindate" ColumnName="joindate" />
+                <ScalarProperty Name="lastip" ColumnName="lastip" />
+                <ScalarProperty Name="lastvisit" ColumnName="lastvisit" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="bday" ColumnName="bday" />
+                <ScalarProperty Name="showemail" ColumnName="showemail" />
+                <ScalarProperty Name="invisible" ColumnName="invisible" />
+                <ScalarProperty Name="newpm" ColumnName="newpm" />
+                <ScalarProperty Name="newpmcount" ColumnName="newpmcount" />
+                <ScalarProperty Name="onlinestate" ColumnName="onlinestate" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="avatarimageURL" ColumnName="avatarimageURL" />
+                <ScalarProperty Name="qq" ColumnName="qq" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postCode" ColumnName="postCode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="HideCode" ColumnName="HideCode" />
+                <ScalarProperty Name="getPwdLastTime" ColumnName="getPwdLastTime" />
+                <ScalarProperty Name="medals" ColumnName="medals" />
+                <ScalarProperty Name="openId" ColumnName="openId" />
+                <ScalarProperty Name="accessToken" ColumnName="accessToken" />
+                <ScalarProperty Name="identityCard" ColumnName="identityCard" />
+                <ScalarProperty Name="identityimageURL" ColumnName="identityimageURL" />
+                <ScalarProperty Name="PassTicket" ColumnName="PassTicket" />
+                <ScalarProperty Name="freezePassTicket" ColumnName="freezePassTicket" />
+                <ScalarProperty Name="shopPassTicket" ColumnName="shopPassTicket" />
+                <ScalarProperty Name="addressProvinceCode" ColumnName="addressProvinceCode" />
+                <ScalarProperty Name="addressCityCode" ColumnName="addressCityCode" />
+                <ScalarProperty Name="addressAreaCode" ColumnName="addressAreaCode" />
+                <ScalarProperty Name="consigneeAddressId" ColumnName="consigneeAddressId" />
+                <ScalarProperty Name="HengYuCode" ColumnName="HengYuCode" />
+                <ScalarProperty Name="commendHengYuCode" ColumnName="commendHengYuCode" />
+                <ScalarProperty Name="isOldUser" ColumnName="isOldUser" />
+                <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+                <ScalarProperty Name="acceptTime" ColumnName="acceptTime" />
+                <ScalarProperty Name="activeTime" ColumnName="activeTime" />
+                <ScalarProperty Name="agentHengYuCode" ColumnName="agentHengYuCode" />
+                <ScalarProperty Name="businessNum" ColumnName="businessNum" />
+                <ScalarProperty Name="businessTotalNum" ColumnName="businessTotalNum" />
+                <ScalarProperty Name="regValidatecode" ColumnName="regValidatecode" />
+                <ScalarProperty Name="ValidatecodeLastTime" ColumnName="ValidatecodeLastTime" />
+                <ScalarProperty Name="renwuOldSys" ColumnName="renwuOldSys" />
+                <ScalarProperty Name="phoneMSISDN" ColumnName="phoneMSISDN" />
+                <ScalarProperty Name="phoneIMEI" ColumnName="phoneIMEI" />
+                <ScalarProperty Name="phoneModel" ColumnName="phoneModel" />
+                <ScalarProperty Name="phoneIMSI" ColumnName="phoneIMSI" />
+                <ScalarProperty Name="BossUid" ColumnName="BossUid" />
+                <ScalarProperty Name="departmentId" ColumnName="departmentId" />
+                <ScalarProperty Name="ZhiWu" ColumnName="ZhiWu" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="baiduPush_responseParamID" ColumnName="baiduPush_responseParamID" />
+                <ScalarProperty Name="userNameRemark" ColumnName="userNameRemark" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="tempPasswrod" ColumnName="tempPasswrod" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="LoginInfo" ColumnName="LoginInfo" />
+                <ScalarProperty Name="Power" ColumnName="Power" />
+                <ScalarProperty Name="Vcard" ColumnName="Vcard" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="OurMsgGroupID" ColumnName="OurMsgGroupID" />
+                <ScalarProperty Name="CurrentSecurityStatus" ColumnName="CurrentSecurityStatus" />
+                <ScalarProperty Name="WeiXin_UserName" ColumnName="WeiXin_UserName" />
+                <ScalarProperty Name="WeiXin_UserOpenID" ColumnName="WeiXin_UserOpenID" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="ucpaas_clientNum" ColumnName="ucpaas_clientNum" />
+                <ScalarProperty Name="ucpaas_clientpwd" ColumnName="ucpaas_clientpwd" />
+                <ScalarProperty Name="TwoDimensionalCodeImg" ColumnName="TwoDimensionalCodeImg" />
+                <ScalarProperty Name="agentAdminHengYuCode" ColumnName="agentAdminHengYuCode" />
+                <ScalarProperty Name="WaitActivatedCredits" ColumnName="WaitActivatedCredits" />
+                <ScalarProperty Name="ReserveCredits" ColumnName="ReserveCredits" />
+                <ScalarProperty Name="TempEmail" ColumnName="TempEmail" />
+                <ScalarProperty Name="ValidateEmailDatetime" ColumnName="ValidateEmailDatetime" />
+                <ScalarProperty Name="ValidateEmailGuid" ColumnName="ValidateEmailGuid" />
+                <ScalarProperty Name="ValidateEmailStatus" ColumnName="ValidateEmailStatus" />
+                <ScalarProperty Name="AlterEmailDatetime" ColumnName="AlterEmailDatetime" />
+                <ScalarProperty Name="AlterEmailGuid" ColumnName="AlterEmailGuid" />
+                <ScalarProperty Name="IsVipPrivilege" ColumnName="IsVipPrivilege" />
+                <ScalarProperty Name="ValidatePhoneStatus" ColumnName="ValidatePhoneStatus" />
+                <ScalarProperty Name="JuHongBao" ColumnName="JuHongBao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="province">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.province">
+              <MappingFragment StoreEntitySet="province">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_TerminalEquipmentSerialCommand">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_TerminalEquipmentSerialCommand">
+              <MappingFragment StoreEntitySet="jjj_TerminalEquipmentSerialCommand">
+                <ScalarProperty Name="ReceiveBackTime" ColumnName="ReceiveBackTime" />
+                <ScalarProperty Name="SendStatus" ColumnName="SendStatus" />
+                <ScalarProperty Name="SendContent" ColumnName="SendContent" />
+                <ScalarProperty Name="TerminalEquipmentID" ColumnName="TerminalEquipmentID" />
+                <ScalarProperty Name="CommandTypeId" ColumnName="CommandTypeId" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="SendAdminName" ColumnName="SendAdminName" />
+                <ScalarProperty Name="TerSerialCommandID" ColumnName="TerSerialCommandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoItem_DocumentDetail">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoItem_DocumentDetail">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoItem_DocumentDetail">
+                <ScalarProperty Name="Second_ProgramInfoItemDocument_ServerBack" ColumnName="Second_ProgramInfoItemDocument_ServerBack" />
+                <ScalarProperty Name="ProgramInfoItemDocumentClientId" ColumnName="ProgramInfoItemDocumentClientId" />
+                <ScalarProperty Name="DocumentUrl" ColumnName="DocumentUrl" />
+                <ScalarProperty Name="CartoonType" ColumnName="CartoonType" />
+                <ScalarProperty Name="TimeLength" ColumnName="TimeLength" />
+                <ScalarProperty Name="DocumentLayer" ColumnName="DocumentLayer" />
+                <ScalarProperty Name="ProgramInfoItemID" ColumnName="ProgramInfoItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoItem_ImageDetail">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoItem_ImageDetail">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoItem_ImageDetail">
+                <ScalarProperty Name="Second_ProgramInfoItemImage_ServerBack" ColumnName="Second_ProgramInfoItemImage_ServerBack" />
+                <ScalarProperty Name="ProgramInfoItemImageClientId" ColumnName="ProgramInfoItemImageClientId" />
+                <ScalarProperty Name="animation" ColumnName="animation" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CartoonType" ColumnName="CartoonType" />
+                <ScalarProperty Name="TimeLength" ColumnName="TimeLength" />
+                <ScalarProperty Name="ImageLayer" ColumnName="ImageLayer" />
+                <ScalarProperty Name="ProgramInfoItemID" ColumnName="ProgramInfoItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoItem_TextDetail">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoItem_TextDetail">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoItem_TextDetail">
+                <ScalarProperty Name="Second_ProgramInfoItemText_ServerBack" ColumnName="Second_ProgramInfoItemText_ServerBack" />
+                <ScalarProperty Name="ProgramInfoItemTextClientId" ColumnName="ProgramInfoItemTextClientId" />
+                <ScalarProperty Name="PlaySpeed" ColumnName="PlaySpeed" />
+                <ScalarProperty Name="PlayCount" ColumnName="PlayCount" />
+                <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+                <ScalarProperty Name="FontFamily" ColumnName="FontFamily" />
+                <ScalarProperty Name="IsBold" ColumnName="IsBold" />
+                <ScalarProperty Name="foreColor" ColumnName="foreColor" />
+                <ScalarProperty Name="BackgroundColor" ColumnName="BackgroundColor" />
+                <ScalarProperty Name="IsBackgroundTransparent" ColumnName="IsBackgroundTransparent" />
+                <ScalarProperty Name="TextDirectionType" ColumnName="TextDirectionType" />
+                <ScalarProperty Name="TextContent" ColumnName="TextContent" />
+                <ScalarProperty Name="TextLayer" ColumnName="TextLayer" />
+                <ScalarProperty Name="ProgramInfoItemID" ColumnName="ProgramInfoItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoItem_TimeDetail">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoItem_TimeDetail">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoItem_TimeDetail">
+                <ScalarProperty Name="Second_ProgramInfoItemTime_ServerBack" ColumnName="Second_ProgramInfoItemTime_ServerBack" />
+                <ScalarProperty Name="ProgramInfoItemTimeClientId" ColumnName="ProgramInfoItemTimeClientId" />
+                <ScalarProperty Name="foreColor" ColumnName="foreColor" />
+                <ScalarProperty Name="BackgroundColor" ColumnName="BackgroundColor" />
+                <ScalarProperty Name="IsBold" ColumnName="IsBold" />
+                <ScalarProperty Name="IsBackgroundTransparent" ColumnName="IsBackgroundTransparent" />
+                <ScalarProperty Name="FontFormat" ColumnName="FontFormat" />
+                <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+                <ScalarProperty Name="FontFamily" ColumnName="FontFamily" />
+                <ScalarProperty Name="ProgramInfoItemID" ColumnName="ProgramInfoItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoItem_VideoDetail">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoItem_VideoDetail">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoItem_VideoDetail">
+                <ScalarProperty Name="Second_ProgramInfoItemVideo_ServerBack" ColumnName="Second_ProgramInfoItemVideo_ServerBack" />
+                <ScalarProperty Name="ProgramInfoItemVideoClientId" ColumnName="ProgramInfoItemVideoClientId" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="VideoVoice" ColumnName="VideoVoice" />
+                <ScalarProperty Name="VideoLayer" ColumnName="VideoLayer" />
+                <ScalarProperty Name="ProgramInfoItemID" ColumnName="ProgramInfoItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoList">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoList">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoList">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="ContainerName" ColumnName="ContainerName" />
+                <ScalarProperty Name="ContainerLayout" ColumnName="ContainerLayout" />
+                <ScalarProperty Name="Second_Container_ServerBack" ColumnName="Second_Container_ServerBack" />
+                <ScalarProperty Name="ContainerClientId" ColumnName="ContainerClientId" />
+                <ScalarProperty Name="Second_Program_ServerBack" ColumnName="Second_Program_ServerBack" />
+                <ScalarProperty Name="ProgramClientId" ColumnName="ProgramClientId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ProgramStatus" ColumnName="ProgramStatus" />
+                <ScalarProperty Name="ProgramHeight" ColumnName="ProgramHeight" />
+                <ScalarProperty Name="ProgramWidth" ColumnName="ProgramWidth" />
+                <ScalarProperty Name="ProgramTitle" ColumnName="ProgramTitle" />
+                <ScalarProperty Name="ProgramInfoID" ColumnName="ProgramInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramInfoListItem">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramInfoListItem">
+              <MappingFragment StoreEntitySet="jjj_ProgramInfoListItem">
+                <ScalarProperty Name="TopMost" ColumnName="TopMost" />
+                <ScalarProperty Name="Second_ProgramInfoItem_ServerBack" ColumnName="Second_ProgramInfoItem_ServerBack" />
+                <ScalarProperty Name="ProgramInfoItemClientId" ColumnName="ProgramInfoItemClientId" />
+                <ScalarProperty Name="IsShowWater" ColumnName="IsShowWater" />
+                <ScalarProperty Name="ProgramInfoItemLayer" ColumnName="ProgramInfoItemLayer" />
+                <ScalarProperty Name="ProgramInfoItemHeight" ColumnName="ProgramInfoItemHeight" />
+                <ScalarProperty Name="ProgramInfoItemWidth" ColumnName="ProgramInfoItemWidth" />
+                <ScalarProperty Name="ProgramInfoItemTop" ColumnName="ProgramInfoItemTop" />
+                <ScalarProperty Name="ProgramInfoItemLeft" ColumnName="ProgramInfoItemLeft" />
+                <ScalarProperty Name="ProgramInfoItemTitle" ColumnName="ProgramInfoItemTitle" />
+                <ScalarProperty Name="ProgramInfoItemType" ColumnName="ProgramInfoItemType" />
+                <ScalarProperty Name="ProgramInfoID" ColumnName="ProgramInfoID" />
+                <ScalarProperty Name="ProgramInfoItemID" ColumnName="ProgramInfoItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_ProgramSendSerialList">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_ProgramSendSerialList">
+              <MappingFragment StoreEntitySet="jjj_ProgramSendSerialList">
+                <ScalarProperty Name="DownloadOverTime" ColumnName="DownloadOverTime" />
+                <ScalarProperty Name="ReceiveBackTime" ColumnName="ReceiveBackTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="EfficaciousTimeEnd" ColumnName="EfficaciousTimeEnd" />
+                <ScalarProperty Name="EfficaciousTimeStart" ColumnName="EfficaciousTimeStart" />
+                <ScalarProperty Name="EfficaciousDateEnd" ColumnName="EfficaciousDateEnd" />
+                <ScalarProperty Name="EfficaciousDateStart" ColumnName="EfficaciousDateStart" />
+                <ScalarProperty Name="SendStatus" ColumnName="SendStatus" />
+                <ScalarProperty Name="ProgramInfoID" ColumnName="ProgramInfoID" />
+                <ScalarProperty Name="TerminalEquipmentID" ColumnName="TerminalEquipmentID" />
+                <ScalarProperty Name="ProgramSendSerialID" ColumnName="ProgramSendSerialID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_user_DrinkCostSerialList">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_user_DrinkCostSerialList">
+              <MappingFragment StoreEntitySet="jjj_user_DrinkCostSerialList">
+                <ScalarProperty Name="CurrentUserBalance" ColumnName="CurrentUserBalance" />
+                <ScalarProperty Name="RunningWaterLitre" ColumnName="RunningWaterLitre" />
+                <ScalarProperty Name="CostFee" ColumnName="CostFee" />
+                <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+                <ScalarProperty Name="CostTime" ColumnName="CostTime" />
+                <ScalarProperty Name="IcCardNo" ColumnName="IcCardNo" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jjj_TerminalSwitchScreenTime">
+            <EntityTypeMapping TypeName="MultimediaSYSModel.jjj_TerminalSwitchScreenTime">
+              <MappingFragment StoreEntitySet="jjj_TerminalSwitchScreenTime">
+                <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="IsSunday" ColumnName="IsSunday" />
+                <ScalarProperty Name="IsSaturday" ColumnName="IsSaturday" />
+                <ScalarProperty Name="IsFriday" ColumnName="IsFriday" />
+                <ScalarProperty Name="IsThursday" ColumnName="IsThursday" />
+                <ScalarProperty Name="IsWednesday" ColumnName="IsWednesday" />
+                <ScalarProperty Name="IsTuesday" ColumnName="IsTuesday" />
+                <ScalarProperty Name="IsMonday" ColumnName="IsMonday" />
+                <ScalarProperty Name="TurnOffTime" ColumnName="TurnOffTime" />
+                <ScalarProperty Name="TurnOnTime" ColumnName="TurnOnTime" />
+                <ScalarProperty Name="TerminalEquipmentID" ColumnName="TerminalEquipmentID" />
+                <ScalarProperty Name="TerminalSwitchScreenTimeID" ColumnName="TerminalSwitchScreenTimeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
